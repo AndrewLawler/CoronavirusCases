@@ -22,6 +22,16 @@ struct Country: Decodable {
     let lastUpdate: String?
 }
 
+struct DailyStat: Decodable {
+    let mainlandChina: Int?
+    let otherLocations: Int?
+    let totalConfirmed: Int?
+    let totalRecovered: Int?
+    let reportDateString: String?
+    let deltaConfirmed: Int?
+    let deltaRecovered: Int?
+}
+
 enum FilmError: String, Error {
     case errorSearching    = "There has been an error while searching. Please try again."
 }
@@ -114,6 +124,51 @@ class NetworkManager {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
                 let country = try decoder.decode(Country.self, from: data)
+                completed(.success(country))
+                
+            } catch {
+                completed(.failure(.errorSearching))
+            }
+            
+        }
+        
+        task.resume()
+        
+    }
+    
+    func getSpecificDay(completed: @escaping (Result<DailyStat, FilmError>) -> Void) {
+    
+        // add year if we have it, if not just search anyway
+        let endpoint = "https://covid19.mathdro.id/api/daily"
+        
+        guard let url = URL(string: endpoint) else {
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            // handle all cases
+            
+            if let _ = error {
+                completed(.failure(.errorSearching))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.errorSearching))
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.errorSearching))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                
+                let country = try decoder.decode(DailyStat.self, from: data)
                 completed(.success(country))
                 
             } catch {

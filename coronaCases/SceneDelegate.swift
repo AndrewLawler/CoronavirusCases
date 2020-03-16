@@ -18,8 +18,47 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = searchVC()
+        window?.rootViewController = createTabbar()
         window?.makeKeyAndVisible()
+    }
+    
+    func createLocalNewsNC() -> UINavigationController {
+        let destVC = LocalNewsVC()
+        destVC.title = "Recent News"
+        let flag = UIImage(systemName: "flag")
+        destVC.tabBarItem = UITabBarItem(title: "Local News", image: flag!, tag: 2)
+        return UINavigationController(rootViewController: destVC)
+    }
+    
+    func createGlobalStatsNC() -> UINavigationController {
+        let destVC = GlobalStatsVC()
+        destVC.title = "Global Stats"
+        let globe = UIImage(systemName: "globe")
+        destVC.tabBarItem = UITabBarItem(title: "Global Stats", image: globe!, tag: 0)
+        return UINavigationController(rootViewController: destVC)
+    }
+    
+    func createSearchNC() -> UINavigationController {
+        let destVC = SearchVC()
+        destVC.title = "Search"
+        let search = UIImage(systemName: "magnifyingglass")
+        destVC.tabBarItem = UITabBarItem(title: "Search", image: search!, tag: 1)
+        return UINavigationController(rootViewController: destVC)
+    }
+    
+    func createTipsNC() -> UINavigationController {
+        let destVC = TipsVC()
+        destVC.title = "Tips"
+        let pencil = UIImage(systemName: "square.and.pencil")
+        destVC.tabBarItem = UITabBarItem(title: "Tips", image: pencil!, tag: 3)
+        return UINavigationController(rootViewController: destVC)
+    }
+    
+    func createTabbar() -> UITabBarController {
+        let tabbar = UITabBarController()
+        UITabBar.appearance().tintColor = .systemPink
+        tabbar.viewControllers = [createGlobalStatsNC(), createSearchNC(), createLocalNewsNC(), createTipsNC()]
+        return tabbar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

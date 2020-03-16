@@ -1,18 +1,23 @@
 //
-//  searchVC.swift
+//  SearchVC.swift
 //  coronaCases
 //
-//  Created by Andrew Lawler on 15/03/2020.
+//  Created by Andrew Lawler on 16/03/2020.
 //  Copyright © 2020 andrewlawler. All rights reserved.
 //
 
 import UIKit
 
-class searchVC: UIViewController {
+struct customRow {
+    var imageValue: String
+    var textValue: String
+}
+
+class SearchVC: UIViewController {
 
     let countryInput = UITextField()
-    let titleLabel = UILabel()
-    let mainImage = UIImageView()
+    let infoLabel = UILabel()
+    let countryLabel = UILabel()
     let tableView = UITableView()
     
     var theCountry: Country?
@@ -25,60 +30,37 @@ class searchVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        getStats()
+        configureUI()
     }
     
-    func getStats() {
-        
-        // use result cases and either create our table or show failure alert
-        
-        NetworkManager.shared.getOverall() { [weak self] result in
+    @objc func dismissVC() {
+          view.endEditing(true)
+          countryLabel.text = countryInput.text
+          getCountryStats(country: countriesConverted[countryInput.text!]!)
+          tableView.isHidden = false
+          tableView.reloadData()
+      }
+    
+    func getCountryStats(country: String) {
+
+        NetworkManager.shared.getCountry(for: country) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success(let country):
                 self.theCountry = country
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
                     self.tableViewRows = [customRow(imageValue: "person.crop.circle.badge.minus", textValue: "Confirmed: \(country.confirmed.value)"), customRow(imageValue: "person.crop.circle.badge.checkmark", textValue: "Recovered: \(country.recovered.value)"), customRow(imageValue: "person.crop.circle.badge.xmark", textValue: "Deaths: \(country.deaths.value)")]
+                    self.tableView.isHidden = false
                     self.tableView.reloadData()
                 }
             case.failure(let error):
                 print(error.rawValue)
             }
         }
-        configureUI()
     }
     
-    func configureTableView() {
-        tableView.isHidden = false
-        tableView.reloadData()
-        view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.allowsSelection = true
-        tableView.rowHeight = 70
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(CoronaCell.self, forCellReuseIdentifier: "myCell")
-        tableView.isHidden = false
-    }
-    
-    func configureUI() {
-        configureTableView()
-        view.addSubview(mainImage)
+    func configurePicker() {
         view.addSubview(countryInput)
-        view.addSubview(titleLabel)
-        
-        mainImage.image = UIImage(systemName: "thermometer")
-        mainImage.tintColor = .systemPink
-        mainImage.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "CoronaCases"
-        titleLabel.font = UIFont(name: "Helvetica-Bold", size: 40)
-        titleLabel.textColor = .systemPink
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 0
         
         let countryPicker = UIPickerView()
         countryPicker.delegate = self
@@ -90,7 +72,7 @@ class searchVC: UIViewController {
         countryInput.textAlignment = .center
         countryInput.layer.borderWidth = 3
         countryInput.layer.borderColor = UIColor.systemPink.cgColor
-        countryInput.layer.cornerRadius = 16
+        countryInput.layer.cornerRadius = 25
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -98,48 +80,78 @@ class searchVC: UIViewController {
         toolbar.setItems([doneButton], animated: false)
         toolbar.isUserInteractionEnabled = true
         countryInput.inputAccessoryView = toolbar
+    }
+    
+    func configureTableView() {
+        tableView.isHidden = true
+        tableView.reloadData()
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.allowsSelection = true
+        tableView.rowHeight = 70
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(CoronaCell.self, forCellReuseIdentifier: "myCell")
+    }
+    
+    func configureLabels() {
+        view.addSubview(infoLabel)
+        view.addSubview(countryLabel)
 
+        infoLabel.text = "Use the picker below to select a specific country to search."
+        infoLabel.font = UIFont(name: "Helvetica", size: 20)
+        infoLabel.textAlignment = .center
+        infoLabel.numberOfLines = 0
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.textColor = .systemGray
+        
+        countryLabel.font = UIFont(name: "Helvetica-Bold", size: 50)
+        countryLabel.textAlignment = .center
+        countryLabel.numberOfLines = 0
+        countryLabel.translatesAutoresizingMaskIntoConstraints = false
+        countryLabel.textColor = .systemPink
+        countryLabel.adjustsFontSizeToFitWidth = true
+    }
+    
+    func configureUI() {
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = .white
+        
+        configureTableView()
+        configureLabels()
+        configurePicker()
+
+        let padding: CGFloat = 20
+        
         NSLayoutConstraint.activate([
         
-            mainImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            mainImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mainImage.heightAnchor.constraint(equalToConstant: view.frame.height/3),
-            mainImage.widthAnchor.constraint(equalToConstant: view.frame.width/2),
+            infoLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            infoLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: padding),
+            infoLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding),
+            infoLabel.heightAnchor.constraint(equalToConstant: 60),
             
-            titleLabel.topAnchor.constraint(equalTo: mainImage.bottomAnchor),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 60),
-            titleLabel.widthAnchor.constraint(equalToConstant: 400),
-            
-            countryInput.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            countryInput.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 40),
             countryInput.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             countryInput.heightAnchor.constraint(equalToConstant: 50),
             countryInput.widthAnchor.constraint(equalToConstant: 200),
             
-            tableView.topAnchor.constraint(equalTo: countryInput.bottomAnchor, constant: 30),
+            countryLabel.topAnchor.constraint(equalTo: countryInput.bottomAnchor, constant: 40),
+            countryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            countryLabel.heightAnchor.constraint(equalToConstant: 50),
+            countryLabel.widthAnchor.constraint(equalToConstant: 400),
+            
+            tableView.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: 40),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-    
         
         ])
     }
-    
-    @objc func dismissVC() {
-        view.endEditing(true)
-        if countryInput.text != "" {
-            let destVC = ShowCasesVC()
-            destVC.title = countryInput.text
-            destVC.country = countriesConverted[countryInput.text!]
-            let navController = UINavigationController(rootViewController: destVC)
-            present(navController, animated: true)
-        }
-    }
-    
 
 }
 
-extension searchVC: UIPickerViewDelegate, UIPickerViewDataSource {
+extension SearchVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -162,7 +174,7 @@ extension searchVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
 }
 
-extension searchVC: UITableViewDelegate, UITableViewDataSource {
+extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewRows.count
