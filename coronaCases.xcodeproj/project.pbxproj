@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		64421B9E241EF80D0032DAE9 /* GlobalStatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64421B9D241EF80D0032DAE9 /* GlobalStatsVC.swift */; };
-		64421BA0241EF8240032DAE9 /* TipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64421B9F241EF8240032DAE9 /* TipsVC.swift */; };
-		64421BA2241EF82D0032DAE9 /* LocalNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64421BA1241EF82D0032DAE9 /* LocalNewsVC.swift */; };
 		64421BAA241F10F50032DAE9 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64421BA9241F10F50032DAE9 /* SearchVC.swift */; };
 		64421BAC241F12070032DAE9 /* RectangleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64421BAB241F12070032DAE9 /* RectangleVC.swift */; };
 		64421BAE241F17CD0032DAE9 /* RectangleTipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64421BAD241F17CD0032DAE9 /* RectangleTipVC.swift */; };
@@ -19,12 +17,17 @@
 		648FFD6F241DB777003440F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648FFD6D241DB777003440F2 /* LaunchScreen.storyboard */; };
 		648FFD7D241DCAAA003440F2 /* CoronaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FFD7C241DCAAA003440F2 /* CoronaCell.swift */; };
 		648FFD7F241DCB40003440F2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648FFD7E241DCB40003440F2 /* NetworkManager.swift */; };
+		64B2DDEA241FF03F0013C5E9 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B2DDE9241FF03F0013C5E9 /* Country.swift */; };
+		64B2DDEC241FF05F0013C5E9 /* DailyStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B2DDEB241FF05F0013C5E9 /* DailyStat.swift */; };
+		64B2DDEE241FF09C0013C5E9 /* CoronaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B2DDED241FF09C0013C5E9 /* CoronaError.swift */; };
+		64B2DDF0241FF1390013C5E9 /* RecentNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B2DDEF241FF1390013C5E9 /* RecentNewsVC.swift */; };
+		64B2DDF3241FFBD20013C5E9 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B2DDF2241FFBD20013C5E9 /* ImageViewExtension.swift */; };
+		64B2DDF5242002260013C5E9 /* CoronaDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B2DDF4242002260013C5E9 /* CoronaDetailCell.swift */; };
+		64B2DDF7242042790013C5E9 /* AdviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B2DDF6242042790013C5E9 /* AdviceVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		64421B9D241EF80D0032DAE9 /* GlobalStatsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStatsVC.swift; sourceTree = "<group>"; };
-		64421B9F241EF8240032DAE9 /* TipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsVC.swift; sourceTree = "<group>"; };
-		64421BA1241EF82D0032DAE9 /* LocalNewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNewsVC.swift; sourceTree = "<group>"; };
 		64421BA9241F10F50032DAE9 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		64421BAB241F12070032DAE9 /* RectangleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleVC.swift; sourceTree = "<group>"; };
 		64421BAD241F17CD0032DAE9 /* RectangleTipVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTipVC.swift; sourceTree = "<group>"; };
@@ -36,6 +39,13 @@
 		648FFD70241DB777003440F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		648FFD7C241DCAAA003440F2 /* CoronaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaCell.swift; sourceTree = "<group>"; };
 		648FFD7E241DCB40003440F2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		64B2DDE9241FF03F0013C5E9 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		64B2DDEB241FF05F0013C5E9 /* DailyStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStat.swift; sourceTree = "<group>"; };
+		64B2DDED241FF09C0013C5E9 /* CoronaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaError.swift; sourceTree = "<group>"; };
+		64B2DDEF241FF1390013C5E9 /* RecentNewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentNewsVC.swift; sourceTree = "<group>"; };
+		64B2DDF2241FFBD20013C5E9 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		64B2DDF4242002260013C5E9 /* CoronaDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaDetailCell.swift; sourceTree = "<group>"; };
+		64B2DDF6242042790013C5E9 /* AdviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,12 +62,11 @@
 		64421B9C241EF7F50032DAE9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				64B2DDE3241FEFDA0013C5E9 /* Sub View Controllers */,
 				64421B9D241EF80D0032DAE9 /* GlobalStatsVC.swift */,
-				64421B9F241EF8240032DAE9 /* TipsVC.swift */,
-				64421BA1241EF82D0032DAE9 /* LocalNewsVC.swift */,
 				64421BA9241F10F50032DAE9 /* SearchVC.swift */,
-				64421BAB241F12070032DAE9 /* RectangleVC.swift */,
-				64421BAD241F17CD0032DAE9 /* RectangleTipVC.swift */,
+				64B2DDEF241FF1390013C5E9 /* RecentNewsVC.swift */,
+				64B2DDF6242042790013C5E9 /* AdviceVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -66,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				648FFD61241DB775003440F2 /* coronaCases */,
-				648FFD60241DB775003440F2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,21 +84,85 @@
 				648FFD5F241DB775003440F2 /* coronaCases.app */,
 			);
 			name = Products;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		648FFD61241DB775003440F2 /* coronaCases */ = {
 			isa = PBXGroup;
 			children = (
+				64B2DDF1241FFBC50013C5E9 /* Extensions */,
+				64B2DDE8241FF0280013C5E9 /* Structures */,
+				64B2DDE7241FF00C0013C5E9 /* Default Files */,
+				64B2DDE5241FEFFC0013C5E9 /* Custom Elements */,
+				64B2DDE4241FEFED0013C5E9 /* Managers */,
 				64421B9C241EF7F50032DAE9 /* View Controllers */,
+			);
+			path = coronaCases;
+			sourceTree = "<group>";
+		};
+		64B2DDE3241FEFDA0013C5E9 /* Sub View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				64421BAB241F12070032DAE9 /* RectangleVC.swift */,
+				64421BAD241F17CD0032DAE9 /* RectangleTipVC.swift */,
+			);
+			path = "Sub View Controllers";
+			sourceTree = "<group>";
+		};
+		64B2DDE4241FEFED0013C5E9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				648FFD7E241DCB40003440F2 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		64B2DDE5241FEFFC0013C5E9 /* Custom Elements */ = {
+			isa = PBXGroup;
+			children = (
+				64B2DDE6241FF0030013C5E9 /* Cells */,
+			);
+			path = "Custom Elements";
+			sourceTree = "<group>";
+		};
+		64B2DDE6241FF0030013C5E9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				648FFD7C241DCAAA003440F2 /* CoronaCell.swift */,
+				64B2DDF4242002260013C5E9 /* CoronaDetailCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		64B2DDE7241FF00C0013C5E9 /* Default Files */ = {
+			isa = PBXGroup;
+			children = (
 				648FFD62241DB775003440F2 /* AppDelegate.swift */,
 				648FFD64241DB775003440F2 /* SceneDelegate.swift */,
 				648FFD6B241DB777003440F2 /* Assets.xcassets */,
 				648FFD6D241DB777003440F2 /* LaunchScreen.storyboard */,
 				648FFD70241DB777003440F2 /* Info.plist */,
-				648FFD7C241DCAAA003440F2 /* CoronaCell.swift */,
-				648FFD7E241DCB40003440F2 /* NetworkManager.swift */,
+				648FFD60241DB775003440F2 /* Products */,
 			);
-			path = coronaCases;
+			path = "Default Files";
+			sourceTree = "<group>";
+		};
+		64B2DDE8241FF0280013C5E9 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				64B2DDE9241FF03F0013C5E9 /* Country.swift */,
+				64B2DDEB241FF05F0013C5E9 /* DailyStat.swift */,
+				64B2DDED241FF09C0013C5E9 /* CoronaError.swift */,
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
+		64B2DDF1241FFBC50013C5E9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				64B2DDF2241FFBD20013C5E9 /* ImageViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,14 +236,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				648FFD7F241DCB40003440F2 /* NetworkManager.swift in Sources */,
+				64B2DDEE241FF09C0013C5E9 /* CoronaError.swift in Sources */,
+				64B2DDEC241FF05F0013C5E9 /* DailyStat.swift in Sources */,
 				648FFD63241DB775003440F2 /* AppDelegate.swift in Sources */,
-				64421BA2241EF82D0032DAE9 /* LocalNewsVC.swift in Sources */,
 				648FFD7D241DCAAA003440F2 /* CoronaCell.swift in Sources */,
 				64421BAE241F17CD0032DAE9 /* RectangleTipVC.swift in Sources */,
 				648FFD65241DB775003440F2 /* SceneDelegate.swift in Sources */,
 				64421BAA241F10F50032DAE9 /* SearchVC.swift in Sources */,
-				64421BA0241EF8240032DAE9 /* TipsVC.swift in Sources */,
+				64B2DDF3241FFBD20013C5E9 /* ImageViewExtension.swift in Sources */,
+				64B2DDEA241FF03F0013C5E9 /* Country.swift in Sources */,
+				64B2DDF0241FF1390013C5E9 /* RecentNewsVC.swift in Sources */,
 				64421BAC241F12070032DAE9 /* RectangleVC.swift in Sources */,
+				64B2DDF5242002260013C5E9 /* CoronaDetailCell.swift in Sources */,
+				64B2DDF7242042790013C5E9 /* AdviceVC.swift in Sources */,
 				64421B9E241EF80D0032DAE9 /* GlobalStatsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FQ2J49XM7A;
-				INFOPLIST_FILE = coronaCases/Info.plist;
+				INFOPLIST_FILE = "coronaCases/Default Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,7 +405,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FQ2J49XM7A;
-				INFOPLIST_FILE = coronaCases/Info.plist;
+				INFOPLIST_FILE = "coronaCases/Default Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

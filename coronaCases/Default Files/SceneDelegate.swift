@@ -22,11 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
     
-    func createLocalNewsNC() -> UINavigationController {
-        let destVC = LocalNewsVC()
+    func createRecentNewsNC() -> UINavigationController {
+        let destVC = RecentNewsVC()
         destVC.title = "Recent News"
         let flag = UIImage(systemName: "flag")
-        destVC.tabBarItem = UITabBarItem(title: "Local News", image: flag!, tag: 2)
+        destVC.tabBarItem = UITabBarItem(title: "Recent News", image: flag!, tag: 2)
         return UINavigationController(rootViewController: destVC)
     }
     
@@ -46,18 +46,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return UINavigationController(rootViewController: destVC)
     }
     
-    func createTipsNC() -> UINavigationController {
-        let destVC = TipsVC()
-        destVC.title = "Tips"
-        let pencil = UIImage(systemName: "square.and.pencil")
-        destVC.tabBarItem = UITabBarItem(title: "Tips", image: pencil!, tag: 3)
+    func createAdviceNC() -> UINavigationController {
+        let destVC = AdviceVC()
+        destVC.title = "What to do"
+        let pencil = UIImage(systemName: "ear")
+        destVC.tabBarItem = UITabBarItem(title: "What to do", image: pencil!, tag: 3)
         return UINavigationController(rootViewController: destVC)
     }
     
     func createTabbar() -> UITabBarController {
         let tabbar = UITabBarController()
         UITabBar.appearance().tintColor = .systemPink
-        tabbar.viewControllers = [createGlobalStatsNC(), createSearchNC(), createLocalNewsNC(), createTipsNC()]
+        tabbar.viewControllers = [createGlobalStatsNC(), createSearchNC(), createRecentNewsNC(), createAdviceNC()]
         return tabbar
     }
 

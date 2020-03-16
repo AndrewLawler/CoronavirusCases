@@ -1,14 +1,14 @@
 //
-//  TipsVC.swift
+//  AdviceVC.swift
 //  coronaCases
 //
-//  Created by Andrew Lawler on 15/03/2020.
+//  Created by Andrew Lawler on 16/03/2020.
 //  Copyright © 2020 andrewlawler. All rights reserved.
 //
 
 import UIKit
 
-class TipsVC: UIViewController {
+class AdviceVC: UIViewController {
     
     let infoLabel = UILabel()
     let tipOne = RectangleTipVC(strLabel: "Wash Hands", info: "Wash your hands regularly for 20 seconds with warm water to beat the virus.")

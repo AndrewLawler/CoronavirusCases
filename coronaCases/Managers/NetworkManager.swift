@@ -8,34 +8,6 @@
 
 import Foundation
 
-// Error case
-
-struct Contains: Decodable {
-    let value: Int
-    let detail: String
-}
-
-struct Country: Decodable {
-    let confirmed: Contains
-    let recovered: Contains
-    let deaths: Contains
-    let lastUpdate: String?
-}
-
-struct DailyStat: Decodable {
-    let mainlandChina: Int?
-    let otherLocations: Int?
-    let totalConfirmed: Int?
-    let totalRecovered: Int?
-    let reportDateString: String?
-    let deltaConfirmed: Int?
-    let deltaRecovered: Int?
-}
-
-enum FilmError: String, Error {
-    case errorSearching    = "There has been an error while searching. Please try again."
-}
-
 class NetworkManager {
     
     // Singleton pattern
@@ -46,7 +18,7 @@ class NetworkManager {
     private init() {}
     
     // function to get from API
-    func getCountry(for country: String, completed: @escaping (Result<Country, FilmError>) -> Void) {
+    func getCountry(for country: String, completed: @escaping (Result<Country, CoronaError>) -> Void) {
     
         // add year if we have it, if not just search anyway
         var endpoint = countryURL + country
@@ -91,7 +63,7 @@ class NetworkManager {
         
     }
     
-    func getOverall(completed: @escaping (Result<Country, FilmError>) -> Void) {
+    func getOverall(completed: @escaping (Result<Country, CoronaError>) -> Void) {
     
         // add year if we have it, if not just search anyway
         var endpoint = baseURL
@@ -136,10 +108,11 @@ class NetworkManager {
         
     }
     
-    func getSpecificDay(completed: @escaping (Result<DailyStat, FilmError>) -> Void) {
+    func getSpecificDay(for date: String, completed: @escaping (Result<[DailyStat], CoronaError>) -> Void) {
     
         // add year if we have it, if not just search anyway
-        let endpoint = "https://covid19.mathdro.id/api/daily"
+        let baseURL = "https://covid19.mathdro.id/api/daily/"
+        let endpoint = baseURL + date
         
         guard let url = URL(string: endpoint) else {
             return
@@ -168,7 +141,7 @@ class NetworkManager {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
-                let country = try decoder.decode(DailyStat.self, from: data)
+                let country = try decoder.decode([DailyStat].self, from: data)
                 completed(.success(country))
                 
             } catch {

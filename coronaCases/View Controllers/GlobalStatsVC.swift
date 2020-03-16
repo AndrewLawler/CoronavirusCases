@@ -11,6 +11,7 @@ import UIKit
 class GlobalStatsVC: UIViewController {
     
     let infoLabel = UILabel()
+    let worriedLabel = UILabel()
     let lastUpdated = UILabel()
     let confirmedCases = RectangleVC(strLabel: "Confirmed")
     let recoveredCases = RectangleVC(strLabel: "Recovered")
@@ -32,7 +33,8 @@ class GlobalStatsVC: UIViewController {
                     self.confirmedCases.numberLabel.text = String(globalStat.confirmed.value)
                     self.recoveredCases.numberLabel.text = String(globalStat.recovered.value)
                     self.deathCases.numberLabel.text = String(globalStat.deaths.value)
-                    self.lastUpdated.text = "Last Updated: \(globalStat.lastUpdate!)"
+                    self.lastUpdated.text = "Last Updated: \(globalStat.lastUpdate!.prefix(10))"
+                    
                 }
             case.failure(let error):
                 print(error.rawValue)
@@ -59,7 +61,7 @@ class GlobalStatsVC: UIViewController {
             lastUpdated.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding),
             lastUpdated.heightAnchor.constraint(equalToConstant: 30),
             
-            confirmedCases.view.topAnchor.constraint(equalTo: lastUpdated.bottomAnchor, constant: padding*3),
+            confirmedCases.view.topAnchor.constraint(equalTo: lastUpdated.bottomAnchor, constant: padding*2),
             confirmedCases.view.leftAnchor.constraint(equalTo: view.leftAnchor, constant: padding),
             confirmedCases.view.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding),
             confirmedCases.view.heightAnchor.constraint(equalToConstant: 96),
@@ -73,6 +75,12 @@ class GlobalStatsVC: UIViewController {
             deathCases.view.leftAnchor.constraint(equalTo: view.leftAnchor, constant: padding),
             deathCases.view.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding),
             deathCases.view.heightAnchor.constraint(equalToConstant: 96),
+            
+            worriedLabel.topAnchor.constraint(equalTo: deathCases.view.bottomAnchor, constant: padding*2),
+            worriedLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: padding*2),
+            worriedLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding*2),
+            worriedLabel.heightAnchor.constraint(equalToConstant: 60),
+            
         ])
     }
     
@@ -96,6 +104,7 @@ class GlobalStatsVC: UIViewController {
     func configureLabels() {
         view.addSubview(infoLabel)
         view.addSubview(lastUpdated)
+        view.addSubview(worriedLabel)
         
         infoLabel.text = "These are the global statistics for the virus."
         infoLabel.font = UIFont(name: "Helvetica", size: 20)
@@ -111,6 +120,14 @@ class GlobalStatsVC: UIViewController {
         lastUpdated.translatesAutoresizingMaskIntoConstraints = false
         lastUpdated.textColor = .systemPink
         lastUpdated.adjustsFontSizeToFitWidth = true
+        
+        worriedLabel.text = "If you are worried about having the virus, please call the NHS on 111 and self isolate for 14 days. "
+        worriedLabel.font = UIFont(name: "Helvetica", size: 20)
+        worriedLabel.textAlignment = .center
+        worriedLabel.numberOfLines = 0
+        worriedLabel.translatesAutoresizingMaskIntoConstraints = false
+        worriedLabel.textColor = .systemGray
+        worriedLabel.adjustsFontSizeToFitWidth = true
     }
 
 }
