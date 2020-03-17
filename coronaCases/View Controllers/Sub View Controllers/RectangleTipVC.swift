@@ -38,13 +38,13 @@ class RectangleTipVC: UIViewController {
         containerView.layer.cornerRadius = 25
         view.addSubview(containerView)
         
-        titleLabel.font = UIFont(name: "Helvetica-Bold", size: 25)
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         titleLabel.textAlignment = .center
         titleLabel.textColor = .systemPink
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(titleLabel)
         
-        infoLabel.font = UIFont(name: "Helvetica", size: 20)
+        infoLabel.font = UIFont(name: "HelveticaNeue", size: 20)
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
         infoLabel.textColor = .systemGray

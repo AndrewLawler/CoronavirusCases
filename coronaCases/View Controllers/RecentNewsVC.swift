@@ -68,14 +68,14 @@ class RecentNewsVC: UIViewController {
         view.addSubview(updatesLabel)
         
         infoLabel.text = "Here you can find the recent cases followed by the rates."
-        infoLabel.font = UIFont(name: "Helvetica", size: 20)
+        infoLabel.font = UIFont(name: "HelveticaNeue", size: 20)
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
         infoLabel.textColor = .systemGray
         
         updatesLabel.text = "Live Updates"
-        updatesLabel.font = UIFont(name: "Helvetica-Bold", size: 30)
+        updatesLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
         updatesLabel.textAlignment = .left
         updatesLabel.numberOfLines = 0
         updatesLabel.translatesAutoresizingMaskIntoConstraints = false

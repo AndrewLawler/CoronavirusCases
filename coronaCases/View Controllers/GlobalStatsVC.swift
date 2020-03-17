@@ -13,9 +13,10 @@ class GlobalStatsVC: UIViewController {
     let infoLabel = UILabel()
     let worriedLabel = UILabel()
     let lastUpdated = UILabel()
-    let confirmedCases = RectangleVC(strLabel: "Confirmed")
-    let recoveredCases = RectangleVC(strLabel: "Recovered")
-    let deathCases = RectangleVC(strLabel: "Deaths")
+    
+    let confirmedCases = RectangleVC(strLabel: "Confirmed", col: UIColor(displayP3Red: 240/255, green: 208/255, blue: 24/255, alpha: 1))
+    let recoveredCases = RectangleVC(strLabel: "Recovered", col: UIColor.systemGreen)
+    let deathCases = RectangleVC(strLabel: "Deaths", col: UIColor.systemRed)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,14 +108,14 @@ class GlobalStatsVC: UIViewController {
         view.addSubview(worriedLabel)
         
         infoLabel.text = "These are the global statistics for the virus."
-        infoLabel.font = UIFont(name: "Helvetica", size: 20)
+        infoLabel.font = UIFont(name: "HelveticaNeue", size: 20)
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
         infoLabel.textColor = .systemGray
         
         lastUpdated.text = "Last Updated: "
-        lastUpdated.font = UIFont(name: "Helvetica-Bold", size: 20)
+        lastUpdated.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         lastUpdated.textAlignment = .center
         lastUpdated.numberOfLines = 0
         lastUpdated.translatesAutoresizingMaskIntoConstraints = false
@@ -122,7 +123,7 @@ class GlobalStatsVC: UIViewController {
         lastUpdated.adjustsFontSizeToFitWidth = true
         
         worriedLabel.text = "If you are worried about having the virus, please call the NHS on 111 and self isolate for 14 days. "
-        worriedLabel.font = UIFont(name: "Helvetica", size: 20)
+        worriedLabel.font = UIFont(name: "HelveticaNeue", size: 20)
         worriedLabel.textAlignment = .center
         worriedLabel.numberOfLines = 0
         worriedLabel.translatesAutoresizingMaskIntoConstraints = false

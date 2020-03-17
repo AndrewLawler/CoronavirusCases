@@ -57,7 +57,7 @@ class AdviceVC: UIViewController {
     func configureLabel() {
         view.addSubview(infoLabel)
         infoLabel.text = "Feel free to use some of these tips to beat the virus and stay safe."
-        infoLabel.font = UIFont(name: "Helvetica", size: 20)
+        infoLabel.font = UIFont(name: "HelveticaNeue", size: 20)
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
         infoLabel.translatesAutoresizingMaskIntoConstraints = false

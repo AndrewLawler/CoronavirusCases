@@ -19,9 +19,11 @@ class RectangleVC: UIViewController {
         configureUI()
     }
     
-    init(strLabel: String){
+    init(strLabel: String, col: UIColor){
         super.init(nibName: nil, bundle: nil)
         titleLabel.text = strLabel
+        titleLabel.textColor = col
+        containerView.layer.borderColor = col.cgColor
         configureUI()
     }
     
@@ -32,19 +34,17 @@ class RectangleVC: UIViewController {
     func configureUI() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.backgroundColor = .white
-        containerView.layer.borderColor = UIColor.systemPink.cgColor
         containerView.layer.borderWidth = 3
         containerView.layer.cornerRadius = 25
         view.addSubview(containerView)
         
-        titleLabel.font = UIFont(name: "Helvetica-Bold", size: 25)
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .systemPink
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(titleLabel)
         
         numberLabel.text = ""
-        numberLabel.font = UIFont(name: "Helvetica-Bold", size: 25)
+        numberLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         numberLabel.textAlignment = .center
         numberLabel.textColor = .systemGray
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
