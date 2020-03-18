@@ -20,10 +20,10 @@ class CoronaDetailCell: UITableViewCell {
     let type2 = UILabel()
     let type3 = UILabel()
     
-    let normalAttribute = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.systemGray]
-    let boldAmberAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor(displayP3Red: 240/255, green: 208/255, blue: 24/255, alpha: 1)]
-    let boldGreenAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.systemGreen]
-    let boldRedAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.systemRed]
+    let normalAttribute = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.white]
+    let boldAmberAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.coronaAmber]
+    let boldGreenAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.coronaGreen]
+    let boldRedAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.coronaPink]
     
 
     override func awakeFromNib() {
@@ -75,7 +75,7 @@ class CoronaDetailCell: UITableViewCell {
     
     private func configure() {
 
-        country.textColor = UIColor.systemPink
+        country.textColor = .white
         country.numberOfLines = 0
         country.adjustsFontSizeToFitWidth = true
         country.textAlignment = .left
@@ -83,16 +83,16 @@ class CoronaDetailCell: UITableViewCell {
         country.font = UIFont(name: "HelveticaNeue", size: 30)
         
         icon1.translatesAutoresizingMaskIntoConstraints = false
-        icon1.tintColor = UIColor(displayP3Red: 240/255, green: 208/255, blue: 24/255, alpha: 1)
+        icon1.tintColor = .coronaAmber
         icon1.image = UIImage(systemName: "person.crop.circle.badge.minus")
     
         
         icon2.translatesAutoresizingMaskIntoConstraints = false
-        icon2.tintColor = .systemGreen
+        icon2.tintColor = .coronaGreen
         icon2.image = UIImage(systemName: "person.crop.circle.badge.checkmark")
         
         icon3.translatesAutoresizingMaskIntoConstraints = false
-        icon3.tintColor = .systemRed
+        icon3.tintColor = .coronaPink
         icon3.image = UIImage(systemName: "person.crop.circle.badge.xmark")
         
         type1.textColor = UIColor.systemGray

@@ -19,10 +19,12 @@ class RectangleTipVC: UIViewController {
         configureUI()
     }
     
-    init(strLabel: String, info: String){
+    init(strLabel: String, info: String, severity: UIColor){
         super.init(nibName: nil, bundle: nil)
         titleLabel.text = strLabel
         infoLabel.text = info
+        containerView.layer.borderColor = severity.cgColor
+        titleLabel.textColor = severity
         configureUI()
     }
     
@@ -32,22 +34,20 @@ class RectangleTipVC: UIViewController {
     
     func configureUI() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.backgroundColor = .white
-        containerView.layer.borderColor = UIColor.systemPink.cgColor
-        containerView.layer.borderWidth = 3
+        containerView.backgroundColor = .bgBlue
+        containerView.layer.borderWidth = 5
         containerView.layer.cornerRadius = 25
         view.addSubview(containerView)
         
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .systemPink
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(titleLabel)
         
         infoLabel.font = UIFont(name: "HelveticaNeue", size: 20)
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
-        infoLabel.textColor = .systemGray
+        infoLabel.textColor = .white
         infoLabel.adjustsFontSizeToFitWidth = true
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(infoLabel)

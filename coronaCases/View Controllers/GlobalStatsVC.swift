@@ -14,14 +14,13 @@ class GlobalStatsVC: UIViewController {
     let worriedLabel = UILabel()
     let lastUpdated = UILabel()
     
-    let confirmedCases = RectangleVC(strLabel: "Confirmed", col: UIColor(displayP3Red: 240/255, green: 208/255, blue: 24/255, alpha: 1))
-    let recoveredCases = RectangleVC(strLabel: "Recovered", col: UIColor.systemGreen)
-    let deathCases = RectangleVC(strLabel: "Deaths", col: UIColor.systemRed)
+    let confirmedCases = RectangleVC(strLabel: "Confirmed", col: .coronaAmber)
+    let recoveredCases = RectangleVC(strLabel: "Recovered", col: .coronaGreen)
+    let deathCases = RectangleVC(strLabel: "Deaths", col: .coronaPink)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .white
+        navigationController?.navigationBar.barStyle = .black
         getOverallStats()
     }
     
@@ -45,6 +44,7 @@ class GlobalStatsVC: UIViewController {
     }
     
     func configureUI() {
+        configureNav()
         configureLabels()
         configureRectangle()
         
@@ -85,6 +85,13 @@ class GlobalStatsVC: UIViewController {
         ])
     }
     
+    func configureNav() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        view.backgroundColor = .bgBlue
+    }
+    
     func configureRectangle() {
         confirmedCases.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(confirmedCases)
@@ -112,14 +119,14 @@ class GlobalStatsVC: UIViewController {
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        infoLabel.textColor = .systemGray
+        infoLabel.textColor = .white
         
         lastUpdated.text = "Last Updated: "
         lastUpdated.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         lastUpdated.textAlignment = .center
         lastUpdated.numberOfLines = 0
         lastUpdated.translatesAutoresizingMaskIntoConstraints = false
-        lastUpdated.textColor = .systemPink
+        lastUpdated.textColor = .white
         lastUpdated.adjustsFontSizeToFitWidth = true
         
         worriedLabel.text = "If you are worried about having the virus, please call the NHS on 111 and self isolate for 14 days. "
@@ -127,7 +134,7 @@ class GlobalStatsVC: UIViewController {
         worriedLabel.textAlignment = .center
         worriedLabel.numberOfLines = 0
         worriedLabel.translatesAutoresizingMaskIntoConstraints = false
-        worriedLabel.textColor = .systemGray
+        worriedLabel.textColor = .white
         worriedLabel.adjustsFontSizeToFitWidth = true
     }
 

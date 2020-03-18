@@ -28,6 +28,7 @@ class RecentNewsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barStyle = .black
         getSpecificDayStats()
     }
     
@@ -58,9 +59,11 @@ class RecentNewsVC: UIViewController {
         imageStats.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func configureView() {
+    func configureNav() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .white
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        view.backgroundColor = .bgBlue
     }
     
     func configureLabels() {
@@ -72,30 +75,37 @@ class RecentNewsVC: UIViewController {
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        infoLabel.textColor = .systemGray
+        infoLabel.textColor = .white
         
         updatesLabel.text = "Live Updates"
         updatesLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
         updatesLabel.textAlignment = .left
         updatesLabel.numberOfLines = 0
         updatesLabel.translatesAutoresizingMaskIntoConstraints = false
-        updatesLabel.textColor = .black
+        updatesLabel.textColor = .white
     }
     
     func configureTableView() {
         view.addSubview(tableView)
-        tableView.isHidden = true
+
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.isHidden = true
         tableView.allowsSelection = true
         tableView.rowHeight = 210
+        
+        tableView.backgroundColor = .bgBlue
+        tableView.separatorColor = .white
+        tableView.separatorInset = .zero
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(CoronaDetailCell.self, forCellReuseIdentifier: "myCell")
     }
     
     func configureUI() {
         configureImage()
-        configureView()
+        configureNav()
         configureLabels()
         configureTableView()
 
@@ -143,6 +153,7 @@ extension RecentNewsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! CoronaDetailCell
+        cell.layer.backgroundColor = UIColor.clear.cgColor
         cell.update(dateUpdated: tableViewDataStorage[indexPath.row].date ?? "N.A", countryName: tableViewDataStorage[indexPath.row].country ?? "N.A", confirmed: tableViewDataStorage[indexPath.row].confirmed ?? "N.A", recovered: tableViewDataStorage[indexPath.row].recovered ?? "N.A", deaths: tableViewDataStorage[indexPath.row].deaths ?? "N.A", province: tableViewDataStorage[indexPath.row].state ?? "N.A")
         return cell
     }

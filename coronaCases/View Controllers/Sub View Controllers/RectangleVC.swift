@@ -33,8 +33,8 @@ class RectangleVC: UIViewController {
     
     func configureUI() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.backgroundColor = .white
-        containerView.layer.borderWidth = 3
+        containerView.backgroundColor = .bgBlue
+        containerView.layer.borderWidth = 5
         containerView.layer.cornerRadius = 25
         view.addSubview(containerView)
         
@@ -46,7 +46,7 @@ class RectangleVC: UIViewController {
         numberLabel.text = ""
         numberLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         numberLabel.textAlignment = .center
-        numberLabel.textColor = .systemGray
+        numberLabel.textColor = .white
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(numberLabel)
         

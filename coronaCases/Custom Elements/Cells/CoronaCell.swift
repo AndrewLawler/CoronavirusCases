@@ -13,10 +13,10 @@ class CoronaCell: UITableViewCell {
     let icon = UIImageView()
     let type = UILabel()
     
-    let normalAttribute = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.systemGray]
-    let boldAmberAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor(displayP3Red: 240/255, green: 208/255, blue: 24/255, alpha: 1)]
-    let boldGreenAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.systemGreen]
-    let boldRedAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.systemRed]
+    let normalAttribute = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.white]
+    let boldAmberAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.coronaAmber]
+    let boldGreenAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.coronaGreen]
+    let boldRedAttributes = [NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 20), NSAttributedString.Key.foregroundColor : UIColor.coronaPink]
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,15 +35,15 @@ class CoronaCell: UITableViewCell {
     func applyAttributedString(name: String, value: String, label: UILabel) {
         let attributedString: NSMutableAttributedString?
         if name == "Confirmed: " {
-            icon.tintColor = UIColor(displayP3Red: 240/255, green: 208/255, blue: 24/255, alpha: 1)
+            icon.tintColor = .coronaAmber
             attributedString = NSMutableAttributedString(string: name, attributes: boldAmberAttributes as [NSAttributedString.Key : Any])
         }
         else if name == "Recovered: " {
-            icon.tintColor = .systemGreen
+            icon.tintColor = .coronaGreen
             attributedString = NSMutableAttributedString(string: name, attributes: boldGreenAttributes as [NSAttributedString.Key : Any])
         }
         else {
-            icon.tintColor = .systemRed
+            icon.tintColor = .coronaPink
             attributedString = NSMutableAttributedString(string: name, attributes: boldRedAttributes as [NSAttributedString.Key : Any])
         }
         let valueString = NSMutableAttributedString(string: value, attributes: normalAttribute as [NSAttributedString.Key : Any])

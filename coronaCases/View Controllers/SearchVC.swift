@@ -31,6 +31,7 @@ class SearchVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barStyle = .black
         configureUI()
     }
     
@@ -65,15 +66,19 @@ class SearchVC: UIViewController {
         
         let countryPicker = UIPickerView()
         countryPicker.delegate = self
-        
         countryInput.inputView = countryPicker
+        
         countryInput.translatesAutoresizingMaskIntoConstraints = false
         countryInput.isUserInteractionEnabled = true
-        countryInput.placeholder = "Pick a country"
-        countryInput.textAlignment = .center
+        
         countryInput.layer.borderWidth = 3
-        countryInput.layer.borderColor = UIColor.systemPink.cgColor
+        countryInput.layer.borderColor = UIColor.coronaPink.cgColor
+        countryInput.backgroundColor = .white
         countryInput.layer.cornerRadius = 25
+        
+        countryInput.textAlignment = .center
+        countryInput.placeholder = "Pick a country"
+        countryInput.textColor = .coronaPink
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -84,13 +89,21 @@ class SearchVC: UIViewController {
     }
     
     func configureTableView() {
-        tableView.isHidden = true
-        tableView.reloadData()
         view.addSubview(tableView)
+        
+        tableView.isHidden = true
+        tableView.allowsSelection = true
+        tableView.reloadData()
+        
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.allowsSelection = true
+        
         tableView.rowHeight = 70
+        
+        tableView.backgroundColor = .bgBlue
+        tableView.separatorColor = .white
+        tableView.separatorInset = .zero
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(CoronaCell.self, forCellReuseIdentifier: "myCell")
     }
@@ -104,21 +117,26 @@ class SearchVC: UIViewController {
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        infoLabel.textColor = .systemGray
+        infoLabel.textColor = .white
         
         countryLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 50)
         countryLabel.textAlignment = .center
         countryLabel.numberOfLines = 0
         countryLabel.translatesAutoresizingMaskIntoConstraints = false
-        countryLabel.textColor = .systemPink
+        countryLabel.textColor = .white
         countryLabel.adjustsFontSizeToFitWidth = true
     }
     
-    func configureUI() {
-        
+   func configureNav() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .white
-        
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        view.backgroundColor = .bgBlue
+    }
+    
+    func configureUI() {
+    
+        configureNav()
         configureTableView()
         configureLabels()
         configurePicker()
@@ -183,6 +201,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! CoronaCell
+        cell.layer.backgroundColor = UIColor.clear.cgColor
         cell.update(image: tableViewRows[indexPath.row].imageValue, text: tableViewRows[indexPath.row].textValue, cellType: tableViewRows[indexPath.row].cellType)
         return cell
     }
